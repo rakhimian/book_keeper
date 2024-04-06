@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from .models import user as user_model
 from .repository import database
-from .routes import auth, user, category, expense
+from .routes import auth, user, category, expense, budget
 
 user_model.Base.metadata.create_all(bind=database.engine)
 
@@ -15,13 +15,14 @@ description = """
 * Получение токена доступа.
 * Чтение пользователя.
 * Создание пользователя.
+...
 """
 
 app = FastAPI(
 title="Book keeper",
     summary=summary,
     description=description,
-    version="0.0.1",
+    version="0.0.2",
     # terms_of_service="http://example.com/terms/",
     contact={
         "name": "Рахимян Тимерханов",
@@ -38,6 +39,7 @@ app.include_router(user.router)
 app.include_router(auth.router)
 app.include_router(category.router)
 app.include_router(expense.router)
+app.include_router(budget.router)
 
 
 @app.get("/")
