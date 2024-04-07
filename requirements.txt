@@ -9,3 +9,7 @@ jose~=1.0.0
 python-jose
 psycopg2-binary
 bcrypt
+pytest-cov
+mypy
+pylint
+flake8
